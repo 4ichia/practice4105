@@ -1,0 +1,19 @@
+---
+title: '10032018'
+author: "ichia"
+date: "2018年10月3日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+```
+```{r}
+
+```
+iuhvo;RB;nb
+
