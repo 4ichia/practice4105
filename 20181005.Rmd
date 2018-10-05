@@ -1,0 +1,73 @@
+---
+title: "1005practice"
+author: "ichia"
+date: "2018年10月5日"
+output: html_document
+---
+
+Operations on numeric objects
+曾意儒: 1.6.1-1.6.2
+```{r}
+num1<-1
+num2<-100
+num1+num2
+num1*num2
+num1^num2
+(num2)^num2
+num3<-12.5666
+round(num3,digits = 2)
+floor(num3)
+ceiling(num3)
+num1<num3
+num1<num3 & num1<num2
+```
+
+4.2 Numeric (vector)/4.3 Character/String (vector)
+```{r}
+b<-"你好"
+bVector<-c("你好","How are you?")
+class(b)
+?class
+```
+
+4.3 Character/String (vector)
+```{r}
+library(readr)
+student <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv")
+library(dplyr)
+library(magrittr)
+student %<>% mutate(
+  身高級距=cut(身高,c(0,150,155,160,165,170,175,180,185,200)))
+as.factor(student$出生地) -> student$出生地
+levels(student$出生地)
+table(student$出生地)
+factor(student$身高級距,
+       levels=c("(0,150]","(150,155]", "(155,160]", "(160,165]" ,"(165,170]", "(170,175]" ,"(175,180]" ,"(180,185]", "(185,200]"),
+       ordered=TRUE) -> student$身高級距
+```
+```{r}
+library(readr)
+studentID <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/studentID.csv")
+str_sub(studentID$學號)
+str_c(letters,LETTERS)
+str_c(letters,LETTERS,sep="-")
+str_c("lowercase: ", letters, ", capital: ", LETTERS)
+```
+
+
+
+
+
+practice1
+```{r}
+gender <- c("男性", "男性", "女性", "男性", "女性", "男性")
+gender <- factor(x = gender, levels = c("男性", "女性"), labels = c("Male", "Female"))
+```
+
+
+
+
+
+
+
+
