@@ -1,0 +1,33 @@
+---
+title: '20181013'
+author: "ichia"
+date: "2018年10月13日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+str_c(letters,LETTERS)
+str_c(letters,LETTERS,sep="-")
+str_c("lowercase: ", letters, ", capital: ", LETTERS)
+```
+
+```{r}
+
+```
+```{r}
+library(readr)
+library(stringr)
+TyphoonData <- read_csv("https://raw.githubusercontent.com/GaryLKL/course-programming-for-ds-Quiz/master/TyphoonData.csv", col_types = cols(.default = col_character()))
+Time <- TyphoonData$發布警報時間
+head(Time)
+a <- c( "2018-09-14 11:30", "2018-07-09 14:30", "2017-09-12 14:30",
+"2017-09-06 10:30", "2017-08-20 23:30", "2017-07-29 17:30")
+b <- str_sub(a,start=6,end=7)
+table(b)
+
+```
+
