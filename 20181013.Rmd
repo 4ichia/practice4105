@@ -30,4 +30,22 @@ b <- str_sub(a,start=6,end=7)
 table(b)
 
 ```
+```{r}
+library(readr)
+library(stringr)
+TyphoonData <- read_csv("https://raw.githubusercontent.com/GaryLKL/course-programming-for-ds-Quiz/master/TyphoonData.csv", col_types = cols(.default = col_character()))
+Time <- TyphoonData$發布警報時間
+table(str_sub(Time, 6,7))
+```
+
+```{r}
+gender <- c("男性", "男性", "女性", "男性", "女性", "男性")
+gender <- factor(x = gender, levels = c("男性", "女性"), labels = c("Male", "Female"))
+head(gender)
+class(gender)
+```
+```{r}
+gender <- c("男性", "男性", "女性", "男性", "女性", "男性")
+class(gender)
+```
 
