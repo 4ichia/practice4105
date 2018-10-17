@@ -21,3 +21,10 @@ b
 
 ```
 
+```{r}
+install.packages("googlesheets")
+library(googlesheets)
+gs_auth(new_user = TRUE)
+
+```
+
