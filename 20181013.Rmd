@@ -49,3 +49,7 @@ gender <- c("男性", "男性", "女性", "男性", "女性", "男性")
 class(gender)
 ```
 
+
+method:
+seq(start,end,by)
+
