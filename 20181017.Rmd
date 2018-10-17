@@ -1,0 +1,23 @@
+---
+title: '20181017'
+author: "ichia"
+date: "2018年10月17日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(stringr)
+a<-c("A, B","B, C")
+a
+str_split_fixed(a,", ", n=3)->b
+str_c(b)->c
+c
+table(b)
+b
+
+```
+
