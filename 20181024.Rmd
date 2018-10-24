@@ -1,0 +1,42 @@
+---
+title: '20181024'
+author: "ichia"
+date: "2018年10月24日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(googlesheets)
+gs_auth(new_user = TRUE)
+gsSurvey<-gs_key("1mC9bnxj11NCNoOCw0Vmn4nxERbHtLjeGo9v9C9b2GDE")  #download sheet information as an object
+classSurvey<-gs_read(gsSurvey,ws=1) #access the 1st worksheet
+class(classSurvey)
+names(classSurvey) 
+
+```
+
+```{r}
+StuDF <- data.frame(
+  StuID=c(1,2,3,4,5),
+  name=c("小明","大雄","胖虎","小新","大白"),
+  score=c(80,60,90,70,50) #變數一,二,三
+  )
+StuDF 
+as.character(StuDF$name) <- StuDF$name #把它的類別轉回來
+
+#以下法二 不要字串進來就被當factor
+StuDF <- data.frame(
+  StuID=c(1,2,3,4,5),
+  name=c("小明","大雄","胖虎","小新","大白"),
+  score=c(80,60,90,70,50) #變數一,二,三
+  )
+
+
+names(StuDF) #告訴你資料框有哪些
+colnames(StuDF)
+```
+
