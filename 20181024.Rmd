@@ -66,5 +66,69 @@ y <- matrix(1:10,nrow=2,ncol=5)
 y
 apply(y,2,sum)
 x <- cbind(x1 = 3, x2 = c(4:1, 2:5))
+?cbind
+x
+for (n in 1:10){ sum(n)
+}
+n
+df <- tibble(
+  a= rnorm(10),b=rnorm(10),c=rnorm(10),d=rnorm(10))
+head(df)
+median(df$a)
+median(df$b)
+output <- vector("double",ncol(df))
+ for(i in seq_along(df)){output[[i]] <- median(df[[i]]) }
+```
+
+#作業二第一題ipeen
+```{r}
+strsplit(iPeenData$`均消`," ")[2]
+str_extract(iPeenData$`均消`,"[0-9]+") #正規表達法
+str_split_fixed(iPeenData$`均消`," ",n=Inf)[,2]
+```
+
+#助教練習四
+```{r}
+library(readr)
+TyphoonData <- read_csv("https://raw.githubusercontent.com/GaryLKL/course-programming-for-ds-Quiz/master/TyphoonData.csv")
+TyphoonData$`近臺強度` <- as.factor(TyphoonData$`近臺強度`)
+class(TyphoonData$`近臺強度`)
+
+head(TyphoonData$`最低氣壓(hPa)`)
+TyphoonData$`最低氣壓(hPa)`<-as.numeric(TyphoonData$`最低氣壓(hPa)`)
+
+TyphoonData$
+#for (單一變數 in 參數向量){ 程式碼 }
+a <- which(colnames(dataset) %in% c("TyphoonData$`7級風暴風半徑(km)`","TyphoonData$`10級風暴風半徑(km)`","TyphoonData$`最低氣壓(hPa)`","TyphoonData$`最大風速(m/s)`") 
+  
+
+
+i <- TyphoonData
+for(i in c(1,2,7,9)){as.numeric[i]} {[[i]] <- as.numeric(TyphoonData[[i]])}
+
+
+as.numeric(TyphoonData$`最大風速(m/s)`)
+as.numeric(TyphoonData$`7級風暴風半徑(km)`)
+as.numeric(TyphoonData$`10級風暴風半徑(km)`)
+class(TyphoonData$`7級風暴風半徑(km)`)
+class(TyphoonData$`最低氣壓(hPa)`)
+```
+
+```{r}
+library(readr)
+TyphoonData <- read_csv("https://raw.githubusercontent.com/GaryLKL/course-programming-for-ds-Quiz/master/TyphoonData.csv")
+index1 <- which(TyphoonData$`年份` >= 2009) 
+index1 <- (TyphoonData$`年份` >= 2009)
+head(TyphoonData[index1,])
+table(TyphoonData[index1,]$`近臺強度`)
+
+
+index2 <- TyphoonData$`年份` %in% 2009:2018
+head(index2)
+index2
+TyphoonData[index2,]$`近臺強度`
+
+a <- which(TyphoonData[index2,]$`近臺強度` == "中度")
+max(a)
 ```
 
