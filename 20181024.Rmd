@@ -131,4 +131,10 @@ TyphoonData[index2,]$`近臺強度`
 a <- which(TyphoonData[index2,]$`近臺強度` == "中度")
 max(a)
 ```
+```{r}
+stuDF
+index <- which(colnames(StuDF) %in% c("stuID","score"))
+for(i in  index){StuDF[,i] <-  as.character(StuDF[,i])}
+class(StuDF$score)
+```
 
