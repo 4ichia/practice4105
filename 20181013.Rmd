@@ -52,4 +52,10 @@ class(gender)
 
 method:
 seq(start,end,by)
+```{r}
+b<-"你好"
+bVector<-c("你好","How are you?")
+class(b)
+class(bVector)
+```
 

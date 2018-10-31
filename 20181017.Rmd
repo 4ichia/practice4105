@@ -27,4 +27,23 @@ library(googlesheets)
 gs_auth(new_user = TRUE)
 
 ```
+```{r}
+a <- seq(ymd("2001-01-01"),ymd("2018-09-01"),by="month")
+b <- seq(ymd("2001-01-01"),ymd("2018-09-01"),by="quarter")
+c <- seq(ymd("2001-01-01"),ymd("2018-09-01"),by="year")
+head(a)
+```
+```{r}
+library(lubridate)
+a <- seq(ymd("2018-01-10"),ymd("2019-12-10"),by="month")
+head(a)
+```
+
+```{r}
+set.seed(123)
+Date <- sample(seq(ymd("2018-10-01"), ymd("2018-10-31"), by = 'day'), 10) 
+Date
+wday(Date)
+
+```
 
