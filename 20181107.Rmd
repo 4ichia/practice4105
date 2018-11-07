@@ -1,0 +1,62 @@
+---
+title: '20181107'
+author: "ichia"
+date: "2018年11月7日"
+output: html_document
+---
+#6.1
+```{r}
+library(stringr)
+library(lubridate)
+民國年月<-c("099/01","099/02","099/03")
+
+# 1
+str_c("1",民國年月,"/01")->民國年月
+
+# 2
+lubridate::ymd(民國年月) -> 民國年月
+
+# 3
+民國年月 + years(911)
+```
+
+# %>%
+```{r}
+民國年月<-c("099/01","099/02","099/03")
+
+library(dplyr)
+# 1
+民國年月 %>% 
+  str_c("1", . ,"/01") %>%
+  ymd %>%
+  { . + years(911) }
+
+#預設：%>% 把它左邊（LHS）的物件流入它右邊（RHS）函數的argument第一個位置。 )
+#若要流入右邊函數的「非」第一位置argument，則用.在右邊函數中標示。
+```
+
+#mutate產生新變數
+```{r}
+library(dplyr)
+library(readr)
+collegeData <- read_csv("https://quality.data.gov.tw/dq_download_csv.php?nid=6231&md5_url=dda8fca407131483c1d8cbf3d61cf793")
+library(dplyr)
+mutate(
+  collegeData,
+  學校代碼=as.factor(學校代碼),
+  學校名稱=as.factor(學校名稱)
+  ) -> collegeData2
+
+```
+```{r}
+library(magrittr)
+library(dplyr)
+collegeData %>%
+  mutate(.,
+  學校代碼= as.factor(學校代碼),
+  學校名稱= as.factor(學校名稱),
+  `日間/進修別`= as.factor(`日間/進修別`)
+  ) -> collegeData2
+collegeData$一年級男生[ ]
+```
+
