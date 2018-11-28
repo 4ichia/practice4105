@@ -60,3 +60,29 @@ collegeData %>%
 collegeData$一年級男生[ ]
 ```
 
+```{r}
+mutate_all()
+```
+
+```{r}
+mutate_at()
+#vars()把要的變數一口氣選
+```
+
+```{r}
+library(stringr)
+library(lubridate)
+`民國年月`<-c("099/01","099/02","099/03")
+
+# 1
+a <- str_c("1",`民國年月`,"/01")->`民國年月`
+
+# 2
+lubridate::ymd(`民國年月`) ->`民國年月`
+
+# 3
+`民國年月` +years(911)
+```
+
+
+

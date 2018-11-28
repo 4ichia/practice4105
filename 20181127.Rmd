@@ -1,0 +1,28 @@
+---
+title: '20181121'
+author: "ichia"
+date: "2018撟<b4>11<e6><9c><88>21<e6>"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r}
+library(googlesheets)
+#gs_auth(new_user = TRUE)
+gsLMSHabit<-gs_key("1yYX4bt6gUITVXDpPqxB23snbIdozzxJuc7l2-PXUWO0")  #download sheet information as an object
+Ecommence<-gs_read(gsLMSHabit,ws="起跑日") #access the 1st worksheet
+nrow(Ecommence)
+ncol(Ecommence)
+colnames(Ecommence)-> E
+```
+
+```{r}
+library(readr)
+install.packages("readxl")
+library(readxl)
+read_xlsx("C:\\Users\\ichia\\Downloads\\小考2.xlsx")
+
+```
+
+

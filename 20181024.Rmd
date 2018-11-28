@@ -138,3 +138,4 @@ for(i in  index){StuDF[,i] <-  as.character(StuDF[,i])}
 class(StuDF$score)
 ```
 
+
