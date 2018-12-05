@@ -1,0 +1,51 @@
+---
+title: '20181205'
+author: "ichia"
+date: "2018年12月5日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readr)
+libraryData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/library100_102.csv")
+```
+
+```{r}
+#libraryData %>%
+# mutate(
+#    學院=as.factor(學院),
+#    書籍館藏地=as.factor(書籍館藏地),
+#    書籍類別=as.factor(書籍類別),
+#    借閱時間=ymd_hms(借閱時間,tz="Asia/Taipei")
+#  ) -> libraryData
+library(dplyr)
+libraryData %>%
+  mutate_at(
+    vars(學院,書籍館藏地,書籍類別),
+    funs(
+      as.factor(.)
+    )
+  ) -> libraryData  
+```
+
+#建立function
+```{r}
+minMaxFun <- function(x){
+  max(x)-> maxNumber
+  min(x)-> minNumber
+  paste0("最大值： ",maxNumber, " 最小值： ",minNumber) -> result
+  return(result) #讓它知道要回傳甚麼 
+}
+```
+```{r}
+#library(dplyr)
+libraryData %>%
+  summarise_at(
+    vars(讀者借閱冊數,入學年,書籍上架年月),
+    funs(
+      minMaxFun(.)
+    )
+  ) -> mixMaxResult
+  
+```
+
