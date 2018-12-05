@@ -215,8 +215,8 @@ hwSubmit %>%
 取出**hwSubmit**中**作業代碼**為Exercise3的子樣本，稱它為**hwSubmit3**。Exercise3的截止時日是台灣時間2018-11-06 00:00:00，請計算每個人該作業離截止時日還有多少小時。（請於**hwSubmit3**中創一個新變數**截止時差**存入每個人的時差小時值，程式最後一行請打hwSubmit3，程式將檢查裡面的**截止時差**是否正確。）(hint: `difftime()`)
 ```{r ans22}
 deadline3 <- ymd_hms("2018-11-06 00:00:00",tz="Asia/Taipei") #記得要放ymd_hms不然直接放字串電腦不知道是時間，且時區tz一定要對
-hwSubmit$Timestamp[(hwSubmit$作業代碼=="Exercise3")] ->hwSubmit3
-deadline3-hwSubmit3
+#hwSubmit$Timestamp[(hwSubmit$作業代碼=="Exercise3")] ->hwSubmit3
+#deadline3-hwSubmit3
 
 
 hwSubmit3 <- hwSubmit[hwSubmit$作業代碼=="Exercise3",]
@@ -224,14 +224,13 @@ hwSubmit3 %>%
   mutate(
     截止時差=difftime(deadline3,Timestamp,units="hours")
   ) -> 
-  hwSubmit3
+  hwSubmit3$截止時差
 ```
 
 ## 2.3 性別差異
 **hwSubmit3**中, 女性「平均」截止時差比男性多多少小時呢？（最後一行答案必須女生減去男性的值。）
 
 ```{r ans23}
-hwSubmit3$截止時差[hwSubmit3$女性==T] %>% mean -> FemaleTime
 hwSubmit3$截止時差[hwSubmit3$女性==F] %>% mean -> MaleTime
 FemaleTime-MaleTime -> dftime1
 dftime1
