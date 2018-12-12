@@ -1,0 +1,105 @@
+---
+title: '20181212'
+author: "ichia"
+date: "2018年12月10日"
+output: html_document
+---
+
+```{r}
+library(readr)
+libraryData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/library100_102.csv")
+```
+#資料中的書籍館藏地有那幾類？先轉factor
+```{r}
+libraryData$學院 %>% 
+  as.factor %>%
+  levels -> storageLocations2
+storageLocations2
+```
+1.第i個館藏地的值是什麼？(存在storageLocation_i物件)
+
+2.如何選出符合i館藏地要求的資料？(存在subsample_i物件)
+
+3.選出上述的子樣本後要如何算出borrowCount_i
+```{r}
+i<-1
+# 1
+storageLocation_i <- storageLocations[i] 
+# 2
+numericalIndexForSubsample<-which(libraryData$書籍館藏地==storageLocation_i)
+subsample_i <- libraryData[numericalIndexForSubsample,]
+# 3
+borrowCount_i <- nrow(subsample_i)
+```
+i<-1一直換到i<-18太麻煩，有沒有更快的方法？->for
+#創造儲存容器可以用vector()函數:第一個講每個
+```{r}
+# 0
+allBorrowCount <- vector("numeric",18)
+i<-1 #i<-1一直換到i<-18太麻煩，有沒有更快的方法？->for
+  # 1
+  storageLocation_i <- storageLocations[i] 
+  # 2
+  numericalIndexForSubsample<-which(libraryData$書籍館藏地==storageLocation_i)
+  subsample_i <- libraryData[numericalIndexForSubsample,]
+  # 3
+  borrowCount_i <- nrow(subsample_i)
+  # 4
+  allBorrowCount[[i]]<-borrowCount_i
+```
+
+```{r}
+# 0
+allBorrowCount <- vector("numeric",18)
+for(i in c(1:18)){
+  # 1
+  storageLocation_i <- storageLocations[i] 
+  # 2
+  numericalIndexForSubsample<-which(libraryData$書籍館藏地==storageLocation_i)
+  subsample_i <- libraryData[numericalIndexForSubsample,]
+  # 3
+  borrowCount_i <- nrow(subsample_i)
+  # 4
+  allBorrowCount[[i]]<-borrowCount_i  
+}
+```
+每個學院的借書量?
+```{r}
+
+```
+```{r}
+libraryData$學院 %>% 
+  as.factor %>%
+  levels -> storageLocations2
+storageLocations2
+allBorrowCount2 <- vector("numeric",6) #6可以用length()
+for(i in c(1:6)){
+  storageLocation2_i <- storageLocations2[i] 
+  
+    numericalIndexForSubsample2<-which(libraryData$學院==storageLocation2_i)
+  
+  subsample2_i <- libraryData[numericalIndexForSubsample2,]
+  
+  borrowCount2_i <- nrow(subsample2_i)
+  allBorrowCount2[[i]]<-borrowCount2_i  
+}
+```
+```{r}
+libraryData$學號 %>% 
+  as.factor %>%
+  levels -> storageLocations3
+allBorrowCount3 <- vector("numeric",length(storageLocations3)) #6可以用length()
+for(i in 1:length(storageLocations3)){
+  storageLocation3_i <- storageLocations3[i] 
+  
+    numericalIndexForSubsample3<-which(libraryData$學號==storageLocation3_i)
+  
+  subsample3_i <- libraryData[numericalIndexForSubsample3,]
+  
+  borrowCount3_i <- nrow(subsample3_i)
+  allBorrowCount3[[i]]<-borrowCount3_i 
+}
+which.max(allBorrowCount3)
+max(allBorrowCount3)
+```
+
