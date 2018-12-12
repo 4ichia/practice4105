@@ -131,9 +131,9 @@ libraryData$借閱時間 %>%
 with_tz(ymd_hms(libraryData$借閱時間),tz="Asia/Taipei")-> libraryData$借閱時間
 
 libraryData %>%
-  group_by(借閱時間) %>%
+  group_by(學號) %>%
   summarise(
-    borrowCount=length(學號)
+    
   ) -> result
 result
 ```
