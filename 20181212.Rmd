@@ -84,10 +84,12 @@ for(i in c(1:6)){
   allBorrowCount2[[i]]<-borrowCount2_i  
 }
 ```
+#每位學生借書量
 ```{r}
 libraryData$學號 %>% 
   as.factor %>%
   levels -> storageLocations3
+#libraryData$學號 %>% uniaque
 allBorrowCount3 <- vector("numeric",length(storageLocations3)) #6可以用length()
 for(i in 1:length(storageLocations3)){
   storageLocation3_i <- storageLocations3[i] 
@@ -99,7 +101,40 @@ for(i in 1:length(storageLocations3)){
   borrowCount3_i <- nrow(subsample3_i)
   allBorrowCount3[[i]]<-borrowCount3_i 
 }
-which.max(allBorrowCount3)
+
+libraryData 
+##############################這樣比較好懂
+libraryData %>%
+for(i in 1:length(libraryData)){ 
+  filter(學號==storageLocations3[i] ) %>%
+  nrow(.) -> allBorrowCount3
+  }
+ 
+#############################
+libraryData %>%
+  filter(學號 == "7080R4a57") %>%
+  nrow()
 max(allBorrowCount3)
+```
+```{r}
+libraryData %>%
+  group_by(書籍館藏地) %>%
+  summarise(
+    borrowCount=length(學號)
+  ) -> result
+result
+```
+```{r}
+libraryData$借閱時間 %>%
+  with_tz(ymd_hms(.),tz="Asia/Taipei")
+
+with_tz(ymd_hms(libraryData$借閱時間),tz="Asia/Taipei")-> libraryData$借閱時間
+
+libraryData %>%
+  group_by(借閱時間) %>%
+  summarise(
+    borrowCount=length(學號)
+  ) -> result
+result
 ```
 
