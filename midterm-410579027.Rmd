@@ -4,9 +4,9 @@ output:
   html_notebook: default
 date: '2018-11-14'
 params:
-  birthday: 你的出生西元年月日，用YYYY-DD-MM格式
-  id: 你學號
-  name: 你的名字
+  birthday: 1996/05/03
+  id: 410579027
+  name: 陳依嘉
 ---
 # 電子書
 
